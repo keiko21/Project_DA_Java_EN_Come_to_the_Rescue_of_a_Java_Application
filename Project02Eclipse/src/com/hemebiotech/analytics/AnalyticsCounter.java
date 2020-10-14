@@ -103,7 +103,7 @@ public class AnalyticsCounter {
 
 	private static void addFileLogger() {
 		try {
-			logger.addHandler(new FileHandler("Project02Eclipse/src/com/hemebiotech/analytics/log/logger" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss")) + ".xml"));
+			logger.addHandler(new FileHandler("Project02Eclipse/src/com/hemebiotech/analytics/logs/logger" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss")) + ".xml"));
 		} catch (IOException e) {
 			logger.log(Level.WARNING, "Cannot create a logger file. Please check path.", e);
 		}
