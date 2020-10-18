@@ -3,7 +3,7 @@ package com.hemebiotech.analytics.symptomscounter;
 import java.util.logging.Logger;
 
 /**
- * Logger specific class for {@link SymptomsCounter} project. Inherit {@link com.hemebiotech.analytics.Logger} logging
+ * Logger specific class for symptoms counter project. Inherit {@link com.hemebiotech.analytics.Logger} logging
  * template.
  * This logger will create automatically a logger file when initializing this class.
  *
