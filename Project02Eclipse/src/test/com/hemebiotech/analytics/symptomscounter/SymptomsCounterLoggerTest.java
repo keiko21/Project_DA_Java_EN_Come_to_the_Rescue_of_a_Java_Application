@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SymptomsHandlerLoggerTest {
+class SymptomsCounterLoggerTest {
 
     @Test
     void should_add_conform_file_logger() throws IOException {

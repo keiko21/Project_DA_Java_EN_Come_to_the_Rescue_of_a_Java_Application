@@ -1,6 +1,9 @@
 package com.hemebiotech.analytics;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.MissingResourceException;
@@ -40,14 +43,19 @@ public abstract class Logger extends java.util.logging.Logger {
     /**
      * Add file logger. If it catches an exception, it allows program to continue even if it can't add a logger file.
      *
-     * @param logger              the logger
-     * @param loggerDirectoryPath the logger directory path
-     * @param loggerClassName     the logger class name
+     * @param logger                    the logger
+     * @param loggerDirectoryStringPath the logger directory path
+     * @param loggerClassName           the logger class name
      */
-    public void addFileLogger(java.util.logging.Logger logger, String loggerDirectoryPath, String loggerClassName) {
+    public void addFileLogger(java.util.logging.Logger logger, String loggerDirectoryStringPath, String loggerClassName) {
+        final Path loggerDirectoryPath = Paths.get(loggerDirectoryStringPath);
+
         try {
+            if (Files.notExists(loggerDirectoryPath)) {
+                Files.createDirectory(loggerDirectoryPath);
+            }
             logger.addHandler(
-                    new FileHandler(loggerDirectoryPath
+                    new FileHandler(loggerDirectoryStringPath
                             + loggerClassName
                             + "_"
                             + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"))
