@@ -20,7 +20,8 @@ class SymptomsCounterLoggerTest {
 
         String creationFileDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
         final Path symptomsCounterFilePath = Paths.get(
-                "Project02Eclipse/src/com/hemebiotech/analytics/symptomscounter/logs/SymptomsCounterLogger_"
+                com.hemebiotech.analytics.Path.LOGS_REPOSITORY.getPath()
+                        + "SymptomsCounterLogger_"
                         + creationFileDate
                         + ".xml");
 

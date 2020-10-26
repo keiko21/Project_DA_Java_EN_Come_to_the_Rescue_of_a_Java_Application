@@ -1,5 +1,7 @@
 package com.hemebiotech.analytics.symptomscounter;
 
+import com.hemebiotech.analytics.Path;
+
 import java.util.logging.Logger;
 
 /**
@@ -12,13 +14,12 @@ import java.util.logging.Logger;
  */
 public class SymptomsCounterLogger extends com.hemebiotech.analytics.Logger {
     private static final Logger logger = Logger.getLogger(SymptomsCounterApplication.class.getName());
-    private static final String loggerDirectoryStringPath = "Project02Eclipse/src/com/hemebiotech/analytics/symptomscounter/logs/";
 
     /**
      * Create a file logger class.
      */
     public SymptomsCounterLogger() {
         super(SymptomsCounterLogger.class.getName(), null);
-        addFileLogger(logger, loggerDirectoryStringPath, SymptomsCounterLogger.class.getSimpleName());
+        addFileLogger(logger, Path.LOGS_REPOSITORY.getPath(), SymptomsCounterLogger.class.getSimpleName());
     }
 }

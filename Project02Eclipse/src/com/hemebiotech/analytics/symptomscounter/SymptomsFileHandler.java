@@ -1,6 +1,7 @@
 package com.hemebiotech.analytics.symptomscounter;
 
 import com.hemebiotech.analytics.FileHandler;
+import com.hemebiotech.analytics.Path;
 
 import java.io.*;
 import java.util.logging.Level;
@@ -12,18 +13,16 @@ import java.util.logging.Level;
  * @version 1.0
  */
 public class SymptomsFileHandler implements FileHandler {
-    private static final String dataDirectoryPath = "Project02Eclipse/src/com/hemebiotech/analytics/symptomscounter/data/";
     private static final String symptomsDataFile = "symptoms.txt";
-
     private static final SymptomsCounterLogger logger = new SymptomsCounterLogger();
 
     private static BufferedWriter tryWritingFile() {
         BufferedWriter bufferedWriter = null;
         try {
-            Writer writer = new FileWriter(dataDirectoryPath + "results.out");
+            Writer writer = new FileWriter(Path.DATA_RESULTS_OUT.getPath());
             bufferedWriter = new BufferedWriter(writer);
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Cannot write result file into " + dataDirectoryPath + ". Please check the path.", e);
+            logger.log(Level.SEVERE, "Cannot write result file into " + Path.DATA_REPOSITORY.getPath() + ". Please check the path.", e);
         }
         return bufferedWriter;
     }
@@ -32,7 +31,7 @@ public class SymptomsFileHandler implements FileHandler {
         try {
             bufferedWriter.write(lineToWrite + "\n");
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Cannot write lines into result file " + dataDirectoryPath + ". Please check lines.", e);
+            logger.log(Level.SEVERE, "Cannot write lines into result file " + Path.DATA_REPOSITORY.getPath() + ". Please check lines.", e);
         }
     }
 
@@ -55,9 +54,9 @@ public class SymptomsFileHandler implements FileHandler {
     public BufferedReader readFile() {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader(dataDirectoryPath + symptomsDataFile));
+            reader = new BufferedReader(new FileReader(Path.DATA_SYMPTOMS.getPath()));
         } catch (FileNotFoundException e) {
-            logger.log(Level.SEVERE, "Please check if file is in path: " + dataDirectoryPath + symptomsDataFile, e);
+            logger.log(Level.SEVERE, "Please check if file is in path: " + Path.DATA_SYMPTOMS.getPath(), e);
         }
         return reader;
     }

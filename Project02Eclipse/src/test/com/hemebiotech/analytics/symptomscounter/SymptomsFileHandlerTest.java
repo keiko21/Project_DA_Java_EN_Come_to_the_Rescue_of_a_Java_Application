@@ -1,10 +1,14 @@
 package test.com.hemebiotech.analytics.symptomscounter;
 
+import com.hemebiotech.analytics.Path;
 import com.hemebiotech.analytics.symptomscounter.SymptomsFileHandler;
 import com.hemebiotech.analytics.symptomscounter.SymptomsHandler;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +20,7 @@ class SymptomsFileHandlerTest {
     void shouldReadSymptomsFile() throws IOException {
         BufferedReader symptomsBufferedReader = new SymptomsFileHandler().readFile();
         List<String> symptomsLineList = symptomsBufferedReader.lines().collect(Collectors.toList());
-        List<String> symptomsLineListDataTest = getLinesFromSymptomsDataTest("Project02Eclipse/src/com/hemebiotech/analytics/symptomscounter/data/symptoms.txt");
+        List<String> symptomsLineListDataTest = getLinesFromSymptoms(Path.DATA_SYMPTOMS.getPath());
 
         symptomsBufferedReader.close();
 
@@ -29,13 +33,14 @@ class SymptomsFileHandlerTest {
 
     @Test
     void writeFile() throws IOException {
-        BufferedReader symptomsBufferedReaderDataTest = getBufferReaderFromFile("Project02Eclipse/src/com/hemebiotech/analytics/symptomscounter/data/symptoms.txt");
+        BufferedReader symptomsBufferedReaderDataTest = getBufferReaderFromFile(Path.DATA_SYMPTOMS.getPath());
         new SymptomsFileHandler().writeFile(SymptomsHandler.handle(symptomsBufferedReaderDataTest));
         symptomsBufferedReaderDataTest.close();
 
-        List<String> resultsLineList = getLinesFromSymptomsDataTest("Project02Eclipse/src/com/hemebiotech/analytics/symptomscounter/data/results.out");
-        writeBufferWriterFromFile();
-        List<String> resultsLineListDataTest = getLinesFromSymptomsDataTest("Project02Eclipse/src/test/com/hemebiotech/analytics/symptomscounter/data/results.out");
+        List<String> resultsLineList = getLinesFromSymptoms(Path.DATA_RESULTS_OUT.getPath());
+        List<String> resultsLineListDataTest = getLinesFromSymptoms(PathDataTest.DATA_RESULTS_OUT.getPath());
+
+        assertEquals(resultsLineListDataTest.size(), resultsLineList.size());
 
         for (int line = 0; line < resultsLineListDataTest.size(); line++) {
             assertEquals(resultsLineListDataTest.get(line), resultsLineList.get(line));
@@ -46,12 +51,7 @@ class SymptomsFileHandlerTest {
         return new BufferedReader(new FileReader(filePath));
     }
 
-    private void writeBufferWriterFromFile() throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Project02Eclipse/src/test/com/hemebiotech/analytics/symptomscounter/data/results.out"));
-        bufferedWriter.close();
-    }
-
-    private List<String> getLinesFromSymptomsDataTest(String filePath) throws IOException {
+    private List<String> getLinesFromSymptoms(String filePath) throws IOException {
         BufferedReader bufferedReader = getBufferReaderFromFile(filePath);
         List<String> lines = bufferedReader.lines().collect(Collectors.toList());
         bufferedReader.close();
