@@ -30,14 +30,11 @@ public abstract class Logger extends java.util.logging.Logger {
      *                           be based on the package name or class name
      *                           of the subsystem, such as java.net
      *                           or javax.swing.  It may be null for anonymous Loggers.
-     * @param resourceBundleName name of ResourceBundle to be used for localizing
-     *                           messages for this logger.  May be null if none
-     *                           of the messages require localization.
      * @throws MissingResourceException if the resourceBundleName is non-null and
      *                                  no corresponding resource can be found.
      */
-    protected Logger(String name, String resourceBundleName) {
-        super(name, resourceBundleName);
+    protected Logger(String name) {
+        super(name, null);
     }
 
     /**

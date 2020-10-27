@@ -20,7 +20,7 @@ class SymptomsFileHandlerTest {
     void should_read_symptoms_file() throws IOException {
         BufferedReader symptomsBufferedReader = new SymptomsFileHandler().readFile();
         List<String> symptomsLineList = symptomsBufferedReader.lines().collect(Collectors.toList());
-        List<String> symptomsLineListDataTest = getLinesFromSymptoms(Path.DATA_SYMPTOMS.getPath());
+        List<String> symptomsLineListDataTest = getLinesFromSymptoms(Path.SYMPTOMS_FILE.getPath());
 
         symptomsBufferedReader.close();
 
@@ -33,12 +33,12 @@ class SymptomsFileHandlerTest {
 
     @Test
     void should_write_results_file() throws IOException {
-        BufferedReader symptomsBufferedReaderDataTest = getBufferReaderFromFile(Path.DATA_SYMPTOMS.getPath());
+        BufferedReader symptomsBufferedReaderDataTest = getBufferReaderFromFile(Path.SYMPTOMS_FILE.getPath());
         new SymptomsFileHandler().writeFile(SymptomsHandler.handle(symptomsBufferedReaderDataTest));
         symptomsBufferedReaderDataTest.close();
 
-        List<String> resultsLineList = getLinesFromSymptoms(Path.DATA_RESULTS_OUT.getPath());
-        List<String> resultsLineListDataTest = getLinesFromSymptoms(PathDataTest.DATA_RESULTS_OUT.getPath());
+        List<String> resultsLineList = getLinesFromSymptoms(Path.RESULTS_OUT_FILE.getPath());
+        List<String> resultsLineListDataTest = getLinesFromSymptoms(PathDataTest.RESULTS_OUT_FILE.getPath());
 
         assertEquals(resultsLineListDataTest.size(), resultsLineList.size());
 

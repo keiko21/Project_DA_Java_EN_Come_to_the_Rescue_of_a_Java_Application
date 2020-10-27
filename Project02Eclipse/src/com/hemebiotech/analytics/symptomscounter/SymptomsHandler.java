@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class SymptomsHandler {
 
     /**
-     * Handle symptoms.
+     * Handle symptoms an return them into an alphabetical order with counted symptoms.
      *
      * @param symptomsFile the symptoms file
      * @return collected, sorted and split symptoms.

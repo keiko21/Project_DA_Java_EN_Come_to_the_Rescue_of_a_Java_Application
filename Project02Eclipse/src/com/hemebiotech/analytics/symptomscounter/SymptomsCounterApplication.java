@@ -1,7 +1,7 @@
 package com.hemebiotech.analytics.symptomscounter;
 
 /**
- * {@link SymptomsCounterApplication} count symptoms from a file and write results.
+ * {@link SymptomsCounterApplication} count symptoms from a file and write results with an alphabetical order.
  *
  * @author <a href="https://www.linkedin.com/in/anastaciya-migal/">Anastaciya Migal</a>
  * @version 1.0

@@ -19,7 +19,7 @@ public class SymptomsCounterLogger extends com.hemebiotech.analytics.Logger {
      * Create a file logger class.
      */
     public SymptomsCounterLogger() {
-        super(SymptomsCounterLogger.class.getName(), null);
+        super(SymptomsCounterLogger.class.getName());
         addFileLogger(logger, Path.LOGS_REPOSITORY.getPath(), SymptomsCounterLogger.class.getSimpleName());
     }
 }

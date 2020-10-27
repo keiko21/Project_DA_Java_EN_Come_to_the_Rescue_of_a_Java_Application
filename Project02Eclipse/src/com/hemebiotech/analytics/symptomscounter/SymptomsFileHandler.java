@@ -19,7 +19,7 @@ public class SymptomsFileHandler implements FileHandler {
     private static BufferedWriter tryWritingFile() {
         BufferedWriter bufferedWriter = null;
         try {
-            Writer writer = new FileWriter(Path.DATA_RESULTS_OUT.getPath());
+            Writer writer = new FileWriter(Path.RESULTS_OUT_FILE.getPath());
             bufferedWriter = new BufferedWriter(writer);
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Cannot write result file into " + Path.DATA_REPOSITORY.getPath() + ". Please check the path.", e);
@@ -54,9 +54,9 @@ public class SymptomsFileHandler implements FileHandler {
     public BufferedReader readFile() {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader(Path.DATA_SYMPTOMS.getPath()));
+            reader = new BufferedReader(new FileReader(Path.SYMPTOMS_FILE.getPath()));
         } catch (FileNotFoundException e) {
-            logger.log(Level.SEVERE, "Please check if file is in path: " + Path.DATA_SYMPTOMS.getPath(), e);
+            logger.log(Level.SEVERE, "Please check if file is in path: " + Path.SYMPTOMS_FILE.getPath(), e);
         }
         return reader;
     }

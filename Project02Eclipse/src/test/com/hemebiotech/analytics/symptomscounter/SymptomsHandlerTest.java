@@ -14,9 +14,9 @@ class SymptomsHandlerTest {
 
     @Test
     void should_handle_symptoms_to_produce_counted_and_alphabetically_ordered_symptoms() throws FileNotFoundException {
-        String[] symptomsHandled = SymptomsHandler.handle(getBufferReaderFromFile(Path.DATA_SYMPTOMS.getPath()));
+        String[] symptomsHandled = SymptomsHandler.handle(getBufferReaderFromFile(Path.SYMPTOMS_FILE.getPath()));
 
-        BufferedReader bufferedReaderDataTest = getBufferReaderFromFile(PathDataTest.DATA_RESULTS_OUT.getPath());
+        BufferedReader bufferedReaderDataTest = getBufferReaderFromFile(PathDataTest.RESULTS_OUT_FILE.getPath());
         String[] symptomsDataTest = bufferedReaderDataTest.lines().toArray(String[]::new);
 
         assertArrayEquals(symptomsDataTest, symptomsHandled);
