@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SymptomsFileHandlerTest {
 
     @Test
-    void shouldReadSymptomsFile() throws IOException {
+    void should_read_symptoms_file() throws IOException {
         BufferedReader symptomsBufferedReader = new SymptomsFileHandler().readFile();
         List<String> symptomsLineList = symptomsBufferedReader.lines().collect(Collectors.toList());
         List<String> symptomsLineListDataTest = getLinesFromSymptoms(Path.DATA_SYMPTOMS.getPath());
@@ -32,7 +32,7 @@ class SymptomsFileHandlerTest {
     }
 
     @Test
-    void writeFile() throws IOException {
+    void should_write_results_file() throws IOException {
         BufferedReader symptomsBufferedReaderDataTest = getBufferReaderFromFile(Path.DATA_SYMPTOMS.getPath());
         new SymptomsFileHandler().writeFile(SymptomsHandler.handle(symptomsBufferedReaderDataTest));
         symptomsBufferedReaderDataTest.close();
